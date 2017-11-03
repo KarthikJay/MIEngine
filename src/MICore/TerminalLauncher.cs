@@ -154,13 +154,19 @@ namespace MICore
     {
         private const string GnomeTerminalPath = "/usr/bin/gnome-terminal";
         private const string XTermPath = "/usr/bin/xterm";
+        private const string KonsoleTerminalPath = "/usr/bin/konsole";
         private string _terminalPath;
         private string _bashCommandPrefix;
 
         public LinuxTerminalLauncher(string title, string initScript, ReadOnlyCollection<EnvironmentEntry> environment)
             : base(title, initScript, environment)
         {
-            if (File.Exists(GnomeTerminalPath))
+            if (File.Exists(KonsoleTerminalPath))
+            {
+                _terminalPath = KonsoleTerminalPath;
+                _bashCommandPrefix = String.Format(CultureInfo.InvariantCulture, "--new-tab --title {0} -e", _title);
+            }
+            else if (File.Exists(GnomeTerminalPath))
             {
                 _terminalPath = GnomeTerminalPath;
                 _bashCommandPrefix = String.Format(CultureInfo.InvariantCulture, "--title {0} -x", _title);

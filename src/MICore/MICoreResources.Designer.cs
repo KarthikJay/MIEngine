@@ -10,7 +10,6 @@
 
 namespace MICore {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -40,7 +39,7 @@ namespace MICore {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MICore.MICoreResources", typeof(MICoreResources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MICore.MICoreResources", typeof(MICoreResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -313,7 +312,7 @@ namespace MICore {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No terminal is available to launch the debugger.  Please install Gnome Terminal or XTerm..
+        ///   Looks up a localized string similar to No terminal is available to launch the debugger.  Please install Gnome Terminal, XTerm or Konsole..
         /// </summary>
         public static string Error_NoTerminalAvailable_Linux {
             get {
